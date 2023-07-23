@@ -179,18 +179,18 @@ if(isOnline){
         totalPlayers.innerText = `${data.length} Players Connected`;
         let plist = document.getElementById("plist");
         plist.textContent = "";
-        if(data.length > 0){
-            for(var y = 0; y <= data.length - 1; y++){
-                let item = document.createElement("span");
-                item.innerText = data[y].name;
-                plist.appendChild(item);
-            }
-        }else{
-            let item = document.createElement("span");
-            item.innerText = "No data to display";
-            item.style.opacity = "0.8";
-            plist.appendChild(item);
-        }
+        // if(data.length > 0){
+        //     for(var y = 0; y <= data.length - 1; y++){
+        //         let item = document.createElement("span");
+        //         item.innerText = data[y].name;
+        //         plist.appendChild(item);
+        //     }
+        // }else{
+        //     let item = document.createElement("span");
+        //     item.innerText = "No data to display";
+        //     item.style.opacity = "0.8";
+        //     plist.appendChild(item);
+        // }
        
     });
 }

@@ -60,7 +60,6 @@
   }
 
 .sv-logo{
-    position: absolute;
     width: 140px;
     height: 140px;
     top: 2rem;
@@ -109,7 +108,6 @@
  .card-container{
     background-color: var(--secondary);
     border-radius: .7rem;
-    width: 25rem;
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -184,4 +182,24 @@
     100% {
         transform: scale(.7);
     }
+}
+#container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#left-column {
+  flex: 0 0 25%;
+  padding: 20px;
+}
+#right-column {
+  flex: 1;
+}
+#play-button {
+  display: inline-block;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
 }
