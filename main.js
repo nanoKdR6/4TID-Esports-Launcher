@@ -60,6 +60,12 @@ ipcMain.on('opendc', (event, data) => {
     ps.invoke();
 });
 
+ipcMain.on('openfm', (event, data) => {
+    const ps = new Shell();
+    ps.addCommand("start " + JSON.stringify(CFG.fivem));
+    ps.invoke();
+});
+
 ipcMain.on('counter', (event, data) => {
     const incrementedNumber = parseInt(data) + 1;
     win.webContents.send('updateNumber', incrementedNumber);

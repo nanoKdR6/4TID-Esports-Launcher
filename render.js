@@ -176,6 +176,9 @@ $("#sv-join").on("click", function(){
         setTimeout(function(){
             $("#sv-join").prop("disabled", false);
         }, 2000);
+    } else {
+        alert("Seems that you don't have FiveM Installed.");
+        ipcRenderer.send("openfm");
     }
 });
 
