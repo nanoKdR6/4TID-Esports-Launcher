@@ -1,8 +1,8 @@
-# 4TID ESPORTS Launcher - License
+# 4TID E-Sports Launcher - License
 
 ## Overview
 
-Thank you for using the 4TID ESPORTS Launcher (the "Software"). This Software is designed to provide a server launcher for our server. By using or interacting with this Software, you agree to be bound by the terms of this license.
+Thank you for using the 4TID E-Sports Launcher (the "Software"). This Software is designed to provide a server launcher for our server. By using or interacting with this Software, you agree to be bound by the terms of this license.
 
 ## License Terms
 
@@ -38,9 +38,9 @@ nanoKid#2693
 
 ## Acknowledgments
 
-We acknowledge the hard work and contributions of the developers and maintainers of the open-source libraries used in this project. We express our gratitude to the gaming community for supporting our efforts to create this custom game launcher for "4TID ESPORTS."
+We acknowledge the hard work and contributions of the developers and maintainers of the open-source libraries used in this project. We express our gratitude to the gaming community for supporting our efforts to create this custom game launcher for "4TID E-Sports."
 
-Thank you for using the 4TID ESPORTS Launcher!
+Thank you for using the 4TID E-Sports Launcher!
 
 nanoKid
 2023-07-22
