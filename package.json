@@ -34,7 +34,8 @@
     "type": "git",
     "url": "git+https://github.com/vsousa14/FiveM-Server-Launcher.git"
   },
-  "author": "SOUSA",
+  "_comment": "author: SOUSA",
+  "author": "nanoKid",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vsousa14/FiveM-Server-Launcher/issues"

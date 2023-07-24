@@ -1,5 +1,5 @@
 # 4TID ESPORTS Launcher - License
-โย่ววว และนี่คือเสียงจากเด็กวัด
+
 ## Overview
 
 Thank you for using the 4TID ESPORTS Launcher (the "Software"). This Software is designed to provide a server launcher for our server. By using or interacting with this Software, you agree to be bound by the terms of this license.

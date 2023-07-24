@@ -176,7 +176,7 @@ if(isOnline){
     );
     ipcRenderer.on("listPlayers", (event, data) => {
         let totalPlayers = document.getElementById("totalPlayers");
-        totalPlayers.innerText = `${data.length} Players Connected`;
+        totalPlayers.innerText = `${data.length} ออนไลน์`;
         let plist = document.getElementById("plist");
         plist.textContent = "";
         // if(data.length > 0){

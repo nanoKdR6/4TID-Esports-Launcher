@@ -27,38 +27,40 @@
             <span onclick="minimizeApp()" style="cursor: pointer;" class="material-icons">minimize</span>
             <span onclick="closeApp()" style="cursor: pointer;" class="material-icons">close</span>
         </header>
-        <div id="container">
-            <div id="left-column">
-                <h1>WELCOME</h1>
-                <div class="card-container">
-                    <span id="sv-stat" class="sv-stat animStatus"></span>
-                    <span id="sv-name" class="sv-name">SOUSA's Server</span>
-                    <span style="cursor: pointer;" id="sv-join" class="material-icons"
-                        onclick="closeApp()">hourglass_empty</span>
-                </div>
-                <div class="players-wrapper">
-                    <h2 id="totalPlayers">loading</h2>
-                    <div id="plist" class="player-list">
-                        <!--PLAYER LIST HERE-->
-                    </div>
-                </div>
-                <img class="sv-logo" src="./img/sv-logo.png" />
+        <div class="left-sidebar">
+            <div class="welcome-text">WELCOME</div>
+            <div class="card-container">
+                <span id="sv-stat" class="sv-stat animStatus"></span>
+                <span id="sv-name" class="sv-name">SOUSA's Server</span>
+                <span style="cursor: pointer;" id="sv-join" class="material-icons">hourglass_empty</span>
             </div>
-            <div id="right-column">
-                <div class="img-overlay">
-                    <img class="header-img" src="./img/bg.jpg" />
-                    <div class="fade"></div>
-                    <div class="card-wrapper" id="cnt">
-                        <a id="play-button" href="#">Play</a>
-                    </div>
+            <div class="players-wrapper">
+                <h2 id="totalPlayers">loading</h2>
+                <div id="plist" class="player-list">
+                    <!--PLAYER LIST HERE-->
                 </div>
+            </div>
+            <img class="logo-image" src="./img/sv-logo.png" alt="Logo">
+        </div>
+        <div class="main-content">
+            <div class="img-overlay">
+                <img class="header-img" src="./img/bg.jpg" />
+                <div class="fade"></div>
+            </div>
+            <div class="social-buttons">
+                <a id="play-button" href="#">PLAY</a>
+                <a href="https://fb.me/4TIDESPORTS" target="_blank"><img src="./img/fb-logo.png" width="50"
+                        height="50"></a>
+                <a href="https://fb.me/4TIDESPORTS" target="_blank"><img src="./img/tk-logo.png" width="50"
+                        height="50"></a>
+                <a onclick="openDiscord()" style="cursor:pointer;" id="dclink"><img src="./img/dc-logo.png" width="50"
+                        height="50" /></a>
+            </div>
+            <div class="youtube-video">
+                <iframe id="youtube-video" src="https://www.youtube.com/embed/yourvideoid?autoplay=1" frameborder="0"
+                    allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-    <div class="bottom-info">
-        <a onclick="openDiscord()" style="cursor:pointer;" id="dclink"><img src="./img/dc-logo.png" width="50"
-                height="50" /></a>
-    </div>
 </body>
 
 </html>

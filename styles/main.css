@@ -49,22 +49,14 @@
 
   .header-img{
     width: 100%;
-    background-repeat: no-repeat; 	
-    background-position: center center; 	
-    -webkit-background-size: cover; 	
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     display: block;
     position: relative;
     z-index: 1;
     position: relative;
   }
-
-.sv-logo{
-    width: 140px;
-    height: 140px;
-    top: 2rem;
-    z-index: 4;
-}
 
   .fade { 
     position: absolute; 
@@ -76,6 +68,13 @@
     linear-gradient(to bottom, rgba(12, 35, 70, 0) 1%, rgba(12, 35, 70, 1) 80%) repeat scroll 0 0; 
  }
 
+
+.sv-logo{
+    width: 140px;
+    height: 140px;
+    top: 2rem;
+    z-index: 4;
+}
  .card-wrapper{
     width: 100%;
     display: flex;
@@ -122,7 +121,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 1.3rem;
     row-gap: 1.2rem;
  }
 
@@ -133,15 +131,11 @@
 
  .player-list{
     width: 85%;
-    height: 16rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    column-gap: 1.2rem;
-    row-gap: 1.2rem;
-    padding: 1.2rem;
  }
 
 .bottom-info{
@@ -183,18 +177,62 @@
         transform: scale(.7);
     }
 }
-#container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+
+.left-sidebar {
+  width: 25%;
+  height: 700px;
+  float: left;
+  position: relative;
 }
-#left-column {
-  flex: 0 0 25%;
+
+.left-sidebar .welcome-text {
+  font-size: 24px;
+  font-weight: bold;
   padding: 20px;
 }
-#right-column {
-  flex: 1;
+
+.left-sidebar .logo-image {
+  width: 240px;
+  height: 240px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
+.main-content {
+  float: left;
+  width: 75%;
+  height: 700px;
+  position: relative;
+}
+
+.main-content .social-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 30px;
+  text-align: center;
+}
+
+.main-content .social-buttons a {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+.main-content .youtube-video {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  width: 640px;
+  height: 360px;
+  /* Add your YouTube video URL here and append "?autoplay=1" for autoplay */
+  background-image: url("path/to/your-youtube-thumbnail.jpg");
+  background-size: cover;
+}
+
 #play-button {
   display: inline-block;
   background-color: #3498db;
