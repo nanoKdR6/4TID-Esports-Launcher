@@ -10,6 +10,16 @@ const Shell = require('node-powershell');
 regedit.setExternalVBSLocation('resources/regedit/vbs')
 var DIR_FiveM = "";
 
+const openFacebook = () => {
+    ipcRenderer.send("openfb"
+    );
+}
+
+const openTiktok = () => {
+    ipcRenderer.send("opentk"
+    );
+}
+
 const openDiscord = () => {
     ipcRenderer.send("opendc"
     );

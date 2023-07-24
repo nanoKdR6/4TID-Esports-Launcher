@@ -28,7 +28,7 @@
             <span onclick="closeApp()" style="cursor: pointer;" class="material-icons">close</span>
         </header>
         <div class="left-sidebar">
-            <div class="welcome-text">WELCOME</div>
+            <img class="welcome-text" src="./img/welcome.png">
             <div class="card-container">
                 <span id="sv-stat" class="sv-stat animStatus"></span>
                 <span id="sv-name" class="sv-name">SOUSA's Server</span>
@@ -48,18 +48,22 @@
                 <div class="fade"></div>
             </div>
             <div class="social-buttons">
-                <a id="play-button" href="#">PLAY</a>
-                <a href="https://fb.me/4TIDESPORTS" target="_blank"><img src="./img/fb-logo.png" width="50"
+                <!--<a id="play-button" href="#">PLAY</a>-->
+                <a onclick="openFacebook()" style="cursor:pointer;" id="dclink"><img src="./img/fb-logo.png" width="50"
                         height="50"></a>
-                <a href="https://fb.me/4TIDESPORTS" target="_blank"><img src="./img/tk-logo.png" width="50"
+                <a onclick="openTiktok()" style="cursor:pointer;" id="dclink"><img src="./img/tk-logo.png" width="50"
                         height="50"></a>
                 <a onclick="openDiscord()" style="cursor:pointer;" id="dclink"><img src="./img/dc-logo.png" width="50"
                         height="50" /></a>
             </div>
             <div class="youtube-video">
-                <iframe id="youtube-video" src="https://www.youtube.com/embed/yourvideoid?autoplay=1" frameborder="0"
+                <iframe width="560" height="315" id="youtube-video"
+                    src="https://www.youtube.com/embed/oxzEdm29JLw?autoplay=1&mute=1&controls=0" frameborder="0"
                     allowfullscreen></iframe>
             </div>
+        </div>
+        <div class="bottom-info">
+            &copy; nanoKid. All rights reserved.
         </div>
 </body>
 
