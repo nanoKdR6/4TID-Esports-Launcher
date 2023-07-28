@@ -27,43 +27,45 @@
             <span onclick="minimizeApp()" style="cursor: pointer;" class="material-icons">minimize</span>
             <span onclick="closeApp()" style="cursor: pointer;" class="material-icons">close</span>
         </header>
-        <div class="left-sidebar">
-            <img class="welcome-text" src="./img/welcome.png">
+        <div class="img-overlay">
+            <!-- <div class="image-container">
+                <img class="sv-logo" src="./img/sv-logo.png"/>
+                <img class="overlay-image" src="./img/dc-logo.png"/>
+            </div> -->
+            <img class="header-img" src="./img/bg.png"/>
+            <!-- <div class="fade"></div> -->
+        </div>
+    
+        <div class="card-wrapper" id="cnt">
+            <!-- <span onclick="serverSwitcher(0)" id="la" style="display: none;" class="material-icons">arrow_back_ios</span> -->
             <div class="card-container">
+                <!-- TODO: THIS BOTTOM TAG WILL CHANGE THE COLOR AND BOX SHADOW WITH JAVASCRIPT -->
                 <span id="sv-stat" class="sv-stat animStatus"></span>
                 <span id="sv-name" class="sv-name">4TID E-Sports</span>
                 <span style="cursor: pointer;" id="sv-join" class="material-icons">hourglass_empty</span>
             </div>
-            <div class="players-wrapper">
-                <h2 id="totalPlayers">loading</h2>
-                <div id="plist" class="player-list">
-                    <!--PLAYER LIST HERE-->
-                </div>
-            </div>
-            <img class="logo-image" src="./img/sv-logo.png" alt="Logo">
+            <!-- <span onclick="serverSwitcher(1)" id="lr" style="display: none;" class="material-icons">arrow_forward_ios</span> -->
         </div>
-        <div class="main-content">
-            <div class="img-overlay">
-                <img class="header-img" src="./img/bg.jpg" />
-                <div class="fade"></div>
-            </div>
-            <div class="social-buttons">
-                <a onclick="openFacebook()" style="cursor:pointer;" id="dclink"><img src="./img/fb-logo.png" width="50"
-                        height="50"></a>
-                <a onclick="openTiktok()" style="cursor:pointer;" id="dclink"><img src="./img/tk-logo.png" width="50"
-                        height="50"></a>
-                <a onclick="openDiscord()" style="cursor:pointer;" id="dclink"><img src="./img/dc-logo.png" width="50"
-                        height="50" /></a>
-            </div>
-            <div class="youtube-video">
-                <iframe width="560" height="315" id="youtube-video"
-                    src="https://www.youtube.com/embed/sIlzp-44U5Q?autoplay=1&loop=1&playlist=sIlzp-44U5Q&mute=1&controls=0" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-        <footer>
-            &copy; nanoKid. All rights reserved.
-        </footer>
-</body>
+    </div>
 
+    <div class="players-wrapper">
+        <h2 id="totalPlayers">loading</h2>
+        <div id="plist" class="player-list">
+       <!--PLAYER LIST HERE-->
+        </div>
+    </div>
+
+    <div class="bottom-info">
+        <a onclick="openDiscord()" style="cursor:pointer;" id="dclink"><img src="./img/info.png" width="30" height="30"/></a> 
+    </div>
+    <!-- <h1>New Launcher ✨ <strong id="c">0</strong></h1>
+    <button onclick="addNumber()">Add</button>
+    <button onclick="removeNumber()">Remove</button>
+    <button onclick="checkprocess()">FiveM Opened?</button>
+    <button id="btn_start">JOIN SERVER</button> -->
+    <footer>
+        &copy; nanoKid. All rights reserved.
+    </footer>
+
+</body>
 </html>

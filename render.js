@@ -177,7 +177,7 @@ $("#sv-join").on("click", function(){
             $("#sv-join").prop("disabled", false);
         }, 2000);
     } else {
-        alert("Seems that you don't have FiveM Installed.");
+        alert("It seems that you don't have FiveM installed.");
         ipcRenderer.send("openfm");
     }
 });
@@ -189,7 +189,7 @@ if(isOnline){
     );
     ipcRenderer.on("listPlayers", (event, data) => {
         let totalPlayers = document.getElementById("totalPlayers");
-        totalPlayers.innerText = `${data.length} ออนไลน์`;
+        totalPlayers.innerText = `${data.length} Online`;
         let plist = document.getElementById("plist");
         plist.textContent = "";
         // if(data.length > 0){
