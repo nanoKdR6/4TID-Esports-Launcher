@@ -56,10 +56,9 @@
     display: block;
     position: relative;
     z-index: 1;
-    position: relative;
   }
 
-  .sv-logo{
+.sv-logo{
     position: absolute;
     width: 140px;
     height: 140px;
@@ -189,54 +188,68 @@
     }
 }
 
-.left-sidebar {
-  width: 25%;
-  height: 700px;
-  float: left;
+.slideshow-container {
   position: relative;
-  padding-left: 28px;
+  max-width: 650px;
+  max-height: 400px;
+  overflow: hidden;
+  margin: auto;
 }
 
-.left-sidebar .welcome-text {
-  max-width: 90%;
-  height: 200px;
-  padding: 20px;
+.slide {
+  display: none;
 }
 
-.left-sidebar .logo-image {
-  max-width: 90%;
+.slide-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.prev, .next {
+  cursor: pointer;
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.main-content {
-  float: left;
-  width: 75%;
-  height: 700px;
-  position: relative;
-}
-
-.main-content .social-buttons {
-  position: absolute;
-  top: 60%;
+  top: 50%;
   transform: translateY(-50%);
-  left: 30px;
+  font-size: 24px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 3px 0 0 3px;
+  z-index: 2;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dot-container {
   text-align: center;
+  margin-top: 10px;
+  z-index: 2;
 }
 
-.main-content .social-buttons a {
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px 20px;
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.main-content .youtube-video {
-  position: absolute;
-  top: 60%;
-  transform: translateY(-50%);
-  right: 100px;
+.active {
+  background-color: #717171;
 }
 
 footer {
