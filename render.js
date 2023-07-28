@@ -10,18 +10,13 @@ const Shell = require('node-powershell');
 regedit.setExternalVBSLocation('resources/regedit/vbs')
 var DIR_FiveM = "";
 
-const openFacebook = () => {
-    ipcRenderer.send("openfb"
+const openLinktr = () => {
+    ipcRenderer.send("openlt"
     );
 }
 
-const openTiktok = () => {
+const openTicket = () => {
     ipcRenderer.send("opentk"
-    );
-}
-
-const openDiscord = () => {
-    ipcRenderer.send("opendc"
     );
 }
 
@@ -275,3 +270,11 @@ function showSlide(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].classList.add("active");
 }
+
+function startSlideshow() {
+    setInterval(() => {
+        changeSlide(1);
+    }, 6000);
+}
+
+startSlideshow();

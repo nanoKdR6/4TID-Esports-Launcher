@@ -42,27 +42,21 @@ ipcMain.on('minimizeApp', (event, data) => {
     win.minimize();
 })
 
-ipcMain.on('openfb', (event, data) => {
+ipcMain.on('openfm', (event, data) => {
     const ps = new Shell();
-    ps.addCommand("start " + JSON.stringify(CFG.facebook));
+    ps.addCommand("start " + JSON.stringify(CFG.fivem));
+    ps.invoke();
+});
+
+ipcMain.on('openlt', (event, data) => {
+    const ps = new Shell();
+    ps.addCommand("start " + JSON.stringify(CFG.linktr));
     ps.invoke();
 });
 
 ipcMain.on('opentk', (event, data) => {
     const ps = new Shell();
-    ps.addCommand("start " + JSON.stringify(CFG.tiktok));
-    ps.invoke();
-});
-
-ipcMain.on('opendc', (event, data) => {
-    const ps = new Shell();
-    ps.addCommand("start " + JSON.stringify(CFG.discord));
-    ps.invoke();
-});
-
-ipcMain.on('openfm', (event, data) => {
-    const ps = new Shell();
-    ps.addCommand("start " + JSON.stringify(CFG.fivem));
+    ps.addCommand("start " + JSON.stringify(CFG.ticket));
     ps.invoke();
 });
 
