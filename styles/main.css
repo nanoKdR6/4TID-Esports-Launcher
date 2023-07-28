@@ -16,6 +16,10 @@
   body{
     color: var(--white);
     background-color: var(--primary);
+    background-image: url("../img/bg.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
   }
 
 .fixed-head{
@@ -189,11 +193,15 @@
 }
 
 .slideshow-container {
-  position: relative;
   max-width: 650px;
   max-height: 400px;
   overflow: hidden;
   margin: auto;
+  position: fixed;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+  z-index: 5;
 }
 
 .slide {
@@ -215,8 +223,7 @@
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
-  border-radius: 3px 0 0 3px;
-  z-index: 2;
+  z-index: 10;
 }
 
 .prev {
@@ -225,7 +232,6 @@
 
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 .prev:hover, .next:hover {
@@ -236,6 +242,11 @@
   text-align: center;
   margin-top: 10px;
   z-index: 2;
+  position: fixed;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .dot {
