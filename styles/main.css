@@ -22,10 +22,16 @@
     background-size: cover;
   }
 
+.drag-bar{
+  -webkit-app-region: drag;
+  height: 24px;
+}
+
 .fixed-head{
     position: sticky;
     top: 0;
     width: 100%;
+    user-select: none;
 }
 
   .win-hr-btns{
@@ -38,7 +44,7 @@
     justify-content: flex-end;
     align-items: center;
     column-gap: 1.5rem;
-    padding: 1.3rem;
+    padding-right: 1.3rem;
     z-index: 4;
   }
   
@@ -69,7 +75,7 @@
     transform: translate(-50%, -50%);
     width: 127px;
     height: 113px;
-    top: 3.5rem;
+    top: 2.5rem;
     z-index: 4;
 }
 
@@ -81,7 +87,7 @@
     align-items: center;
     position: absolute;
     z-index: 4;
-    top: 7rem;
+    top: 5.7rem;
     font-weight: bold;
  }
 

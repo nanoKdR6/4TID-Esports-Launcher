@@ -1,6 +1,6 @@
 {
   "name": "4TID-Esports-Launcher",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,8 +10,9 @@
   "build":{
     "appId": "4TID E-Sports Launcher",
     "win":{
-      "target": ["nsis"],
-      "icon":"icon.ico"
+      "target": "nsis",
+      "icon":"icon.ico",
+      "publisherName": "4TID E-Sports"
     },
     "nsis":{
       "oneClick":true,
