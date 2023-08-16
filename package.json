@@ -1,6 +1,6 @@
 {
   "name": "4TID-Esports-Launcher",
-  "version": "1.0.4",
+  "version": "1.0.4a",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
