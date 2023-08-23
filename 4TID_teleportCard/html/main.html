@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <script>
+    window.addEventListener('message', (event) => {
+      if (event.data.type === "1") {
+        const msg = new Audio('./Haircut.mp3');
+        msg.volume = 1.0;
+        msg.play();
+      }
+    });
+  </script>
+</body>
+</html>
