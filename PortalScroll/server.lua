@@ -1,23 +1,14 @@
 ESX = nil
 
-TriggerEvent('esx:getSharedObject', function(obj)
-    ESX = obj
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-RegisterServerEvent('TeleportCard:RemoveItem')
-AddEventHandler('TeleportCard:RemoveItem', function(item)
-    local source = source
+ESX.RegisterUsableItem(PortalConfig.PortalItem, function(source)
     local player = ESX.GetPlayerFromId(source)
     if player then
-        player.removeInventoryItem(item, 1)
-    end
-end)
-
-ESX.RegisterUsableItem(TeleportConfig.TeleportItem, function(source)
-    local player = ESX.GetPlayerFromId(source)
-    if player then
-        local itemCount = player.getInventoryItem(TeleportConfig.TeleportItem).count
-        if itemCount <= 0 then
+        local itemCount = player.getInventoryItem(PortalConfig.PortalItem).count
+        if itemCount > 0 then
+            TriggerClientEvent("PortalScroll:Warp", source)
+        else
             TriggerClientEvent("pNotify:SendNotification", source, {
                 text = '<strong class="red-text">ไม่สามารถใช้งานได้</strong>',
                 type = "error",
@@ -25,8 +16,17 @@ ESX.RegisterUsableItem(TeleportConfig.TeleportItem, function(source)
                 layout = "bottomCenter",
                 queue = "global"
             })
-        else
-            TriggerClientEvent("TeleportCard:SelectPlayer", source)
         end
     end
 end)
+
+
+RegisterServerEvent('PortalScroll:RemoveItem')
+AddEventHandler('PortalScroll:RemoveItem', function(item)
+    local source = source
+    local player = ESX.GetPlayerFromId(source)
+    if player then
+        player.removeInventoryItem(item, 1)
+    end
+end)
+

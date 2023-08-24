@@ -1,8 +1,7 @@
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
 author 'nanoKid - GitHub: https://github.com/nanoKidR6/4TID-Esports-Repo'
-
-version '1.0.2'
+version '1.0.3'
 
 client_scripts {
     'config.lua',
