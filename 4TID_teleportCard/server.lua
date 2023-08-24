@@ -1,28 +1,32 @@
-ESX						= nil
+ESX = nil
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
-RegisterServerEvent('Black_Teleprotcard:removeItem')
-AddEventHandler('Black_Teleprotcard:removeItem', function(item)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    xPlayer.removeInventoryItem(item, 1)
+TriggerEvent('esx:getSharedObject', function(obj)
+    ESX = obj
 end)
 
-ESX.RegisterUsableItem(Config.Item, function(source)
-	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(_source)
-	if xPlayer then
-		if xPlayer.getInventoryItem(Config.Item).count > 0 then
-			TriggerClientEvent("Black_Teleprotcard:selectPlayer", _source)
-        else
-			TriggerClientEvent("pNotify:SendNotification", _source, {
+RegisterServerEvent('TeleportCard:RemoveItem')
+AddEventHandler('TeleportCard:RemoveItem', function(item)
+    local source = source
+    local player = ESX.GetPlayerFromId(source)
+    if player then
+        player.removeInventoryItem(item, 1)
+    end
+end)
+
+ESX.RegisterUsableItem(TeleportConfig.TeleportItem, function(source)
+    local player = ESX.GetPlayerFromId(source)
+    if player then
+        local itemCount = player.getInventoryItem(TeleportConfig.TeleportItem).count
+        if itemCount <= 0 then
+            TriggerClientEvent("pNotify:SendNotification", source, {
                 text = '<strong class="red-text">ไม่สามารถใช้งานได้</strong>',
                 type = "error",
                 timeout = 3000,
                 layout = "bottomCenter",
                 queue = "global"
             })
-		end
-	end
+        else
+            TriggerClientEvent("TeleportCard:SelectPlayer", source)
+        end
+    end
 end)
