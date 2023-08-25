@@ -29,7 +29,7 @@ AddEventHandler(ResourceName..'give', function()
         end
 
         if Config.ItemBonus ~= nil then
-            for bonus in pairs(Config.ItemBonus) do
+            for _, bonus in pairs(Config.ItemBonus) do
                 if math.random(1, 100) <= bonus.Percent then
                     local xItemZ = xPlayer.getInventoryItem(bonus.ItemName)
                     if xItemZ.limit ~= -1 and xItemZ.count >= xItemZ.limit then
@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
         local gettime = os.date('%X')
 
-        for time in pairs(Config.Timeonline) do
+        for _, time in pairs(Config.Timeonline) do
             if gettime == time.Times then
                 start()
             end

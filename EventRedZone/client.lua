@@ -16,7 +16,9 @@ secondsRemaining = 0
 
 Citizen.CreateThread(function()
     while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        TriggerEvent('esx:getSharedObject', function(obj)
+            ESX = obj
+        end)
         Citizen.Wait(0)
     end
 end)
@@ -26,13 +28,13 @@ AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 
-RegisterNetEvent(ResourceName..'startevent')
-AddEventHandler(ResourceName..'startevent', function(time)
+RegisterNetEvent(ResourceName .. 'startevent')
+AddEventHandler(ResourceName .. 'startevent', function(time)
     secondsRemaining = time
 end)
 
-RegisterNetEvent(ResourceName..'reviveon')
-AddEventHandler(ResourceName..'reviveon', function()
+RegisterNetEvent(ResourceName .. 'reviveon')
+AddEventHandler(ResourceName .. 'reviveon', function()
     AEDonline = true
 end)
 
@@ -52,7 +54,7 @@ Citizen.CreateThread(function()
         local PlayerCoords = GetEntityCoords(PlayerPedId())
         if secondsRemaining > 0 then
             if GetDistanceBetweenCoords(PlayerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 50 and not startwork then
-                TriggerEvent(ResourceName..'StartWork', source)
+                TriggerEvent(ResourceName .. 'StartWork', source)
                 startwork = true
                 Citizen.Wait(500)
             end
@@ -85,14 +87,6 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Function to format time as "minutes : seconds"
-function secondsToClock(seconds)
-    local hours = math.floor(seconds / 3600)
-    local mins = math.floor((seconds - hours * 3600) / 60)
-    local secs = math.floor(seconds - hours * 3600 - mins * 60)
-    return string.format("%02d : %02d", mins, secs)
-end
-
 -- Main code execution
 Citizen.CreateThread(function()
     while true do
@@ -100,7 +94,7 @@ Citizen.CreateThread(function()
         local PlayerCoords = GetEntityCoords(PlayerPedId())
         if secondsRemaining > 0 then
             if GetDistanceBetweenCoords(PlayerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 50 and not startwork then
-                TriggerEvent(ResourceName..'StartWork', source)
+                TriggerEvent(ResourceName .. 'StartWork', source)
                 startwork = true
                 Citizen.Wait(500)
             end
@@ -122,7 +116,7 @@ AddEventHandler('playerSpawned', function()
         local PlayerCoords = GetEntityCoords(PlayerPedId())
         if GetDistanceBetweenCoords(PlayerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 100 then
             local randomteleport = math.random(1, 2)
-            if AEDonline == true then
+            if AEDonline then
                 Wait(60000)
                 if randomteleport == 1 then
                     SetEntityCoords(PlayerPedId(), Config.Zoneteleport.coords)
@@ -131,16 +125,14 @@ AddEventHandler('playerSpawned', function()
                 end
                 AEDonline = false
             else
-                AEDonline = false
                 if randomteleport == 1 then
                     SetEntityCoords(PlayerPedId(), Config.Zoneteleport.coords)
                 elseif randomteleport == 2 then
                     SetEntityCoords(PlayerPedId(), Config.Zoneteleport.coords2)
                 end
             end
-        else
-            AEDonline = false
         end
+        AEDonline = false
     end
     isDead = false
 end)
@@ -149,15 +141,15 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        local PlayerCoords = GetEntityCoords(PlayerPedId())
-        if GetDistanceBetweenCoords(PlayerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 200 then
+        local playerCoords = GetEntityCoords(PlayerPedId())
+        
+        if GetDistanceBetweenCoords(playerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 200 then
             DrawMarker(1, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z - 1.0, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 100.5, 100.5, 12.5, 255, 0, 0, 100, false, true, 2, false, false, false, false)
         else
             Citizen.Wait(500)
         end
     end
 end)
-
 
 -- Work PickedUp On
 RegisterNetEvent(ResourceName..'StartWork')
@@ -169,9 +161,9 @@ AddEventHandler(ResourceName..'StartWork', function()
         Citizen.CreateThread(function()
             while startwork do
                 Citizen.Wait(10)
-                local PlayerCoords = GetEntityCoords(PlayerPedId())
+                local playerCoords = GetEntityCoords(PlayerPedId())
                 
-                if GetDistanceBetweenCoords(PlayerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 100 then
+                if GetDistanceBetweenCoords(playerCoords, Config.Zone.Pos.x, Config.Zone.Pos.y, Config.Zone.Pos.z, true) < 100 then
                     SpawnObjects()
                     Citizen.Wait(500)
                 else
@@ -189,7 +181,7 @@ AddEventHandler(ResourceName..'StartWork', function()
                 local coords = GetEntityCoords(playerPed)
                 local nearbyObject, nearbyID
                 
-                for i = 1, #ObjectLists, 1 do
+                for i = 1, #ObjectLists do
                     if GetDistanceBetweenCoords(coords, GetEntityCoords(ObjectLists[i]), false) < 2 then
                         nearbyObject, nearbyID = ObjectLists[i], i
                     end
@@ -227,13 +219,6 @@ AddEventHandler(ResourceName..'StartWork', function()
     end
 end)
 
-function OpenTrashCan()
-    TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base", "base", 8.0, -8.0, -1, 1, 0, false, false, false)
-    TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@", "player_search", 8.0, -8.0, -1, 48, 0, false, false, false)
-    Wait(Config.Time)
-    ClearPedTasks(PlayerPedId())
-end
-
 -- PickedUp
 RegisterNetEvent(ResourceName..'prop')
 AddEventHandler(ResourceName..'prop', function()
@@ -241,7 +226,7 @@ AddEventHandler(ResourceName..'prop', function()
     local coords = GetEntityCoords(playerPed)
     local nearbyObject, nearbyID
     
-    for i = 1, #ObjectLists, 1 do
+    for i = 1, #ObjectLists do
         if GetDistanceBetweenCoords(coords, GetEntityCoords(ObjectLists[i]), false) < 2 then
             nearbyObject, nearbyID = ObjectLists[i], i
         end
@@ -282,16 +267,6 @@ AddEventHandler(ResourceName..'prop', function()
     end
 end)
 
-function Object()
-    local playerPed = PlayerPedId()
-    local coords = GetEntityCoords(playerPed)
-    local x, y, z = table.unpack(coords)
-    local boneIndex = GetPedBoneIndex(playerPed, 57005)
-    
-    Objecton = CreateObject(GetHashKey('prop_tool_pickaxe'), x, y, z + 0.2,  true,  true, true)
-    AttachEntityToEntity(Objecton, playerPed, boneIndex, 0.16, 0.00, 0.00, 410.0, 20.00, 140.0, true, true, false, true, 1, true)
-end
-
 -- Process
 RegisterNetEvent(ResourceName..'clear')
 AddEventHandler(ResourceName..'clear', function()
@@ -322,13 +297,6 @@ AddEventHandler(ResourceName..'clear', function()
     end
 end)
 
-function loadAnimDict(dict)
-    while not HasAnimDictLoaded(dict) do
-        RequestAnimDict(dict)
-        Citizen.Wait(10)
-    end
-end
-
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
@@ -357,49 +325,46 @@ Citizen.CreateThread(function()
     EndTextCommandSetBlipName(blip1)
 end)
 
--- DisplayHelpText
-function DisplayHelpText(str)
-    SetTextComponentFormat("STRING")
-    AddTextComponentString(str)
-    DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-end
-
--- DeleteObject
-function DeleteObject()
-    startwork = false
-    ESX.Game.DeleteObject(Objecton)
-    PlaceObjectOnGroundProperly(Objecton)
-
-    for obj in pairs(ObjectLists) do
-        ESX.Game.DeleteObject(obj)
-    end
-
-    Citizen.Wait(2000)
-
-    for obj in pairs(ObjectLists) do
-        ESX.Game.DeleteObject(obj)
-    end
-
-    Citizen.Wait(2000)
-
-    for obj in pairs(ObjectLists) do
-        ESX.Game.DeleteObject(obj)
-        Objects = 0
-    end
-
-    Citizen.Wait(500)
-end
-
 -- Stop Resource
 AddEventHandler('onResourceStop', function(resource)
     if resource == GetCurrentResourceName() then
-        for obj in pairs(ObjectLists) do
+        for _, obj in pairs(ObjectLists) do
             ESX.Game.DeleteObject(obj)
         end
     end
 end)
 
+-- Function to format time as "minutes : seconds"
+function secondsToClock(seconds)
+    local hours = math.floor(seconds / 3600)
+    local mins = math.floor((seconds - hours * 3600) / 60)
+    local secs = math.floor(seconds - hours * 3600 - mins * 60)
+    return string.format("%02d : %02d", mins, secs)
+end
+
 -- SpawnObjects
+function SpawnObjects()
+    while Objects < Config.SpawnObjects do
+        Citizen.Wait(0)
+        local objectCoords = GenerateObjectCoords()
+
+        local listObject = {
+            { Name = "likemod_chest_anim_props" },
+            { Name = "likemod_chest_anim_props" }
+        }
+
+        local randomStone = math.random(#listObject)
+
+        ESX.Game.SpawnLocalObject(listObject[randomStone].Name, vector3(objectCoords.x, objectCoords.y, Config.Zone.Pos.z), function(object)
+            PlaceObjectOnGroundProperly(object)
+            FreezeEntityPosition(object, true)
+
+            table.insert(ObjectLists, object)
+            Objects = Objects + 1
+        end)
+    end
+end
+
 function GenerateObjectCoords() 
     while true do
         Citizen.Wait(1)
@@ -426,33 +391,25 @@ function GenerateObjectCoords()
     end
 end
 
-function SpawnObjects()
-    while Objects < Config.SpawnObjects do
-        Citizen.Wait(0)
-        local objectCoords = GenerateObjectCoords()
+function GetCoordZ(x, y)
+    local groundCheckHeights = { 40.0, 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 100.0 }
 
-        local listObject = {
-            { Name = "likemod_chest_anim_props" },
-            { Name = "likemod_chest_anim_props" }
-        }
+    for _, height in ipairs(groundCheckHeights) do
+        local foundGround, z = GetGroundZFor_3dCoord(x, y, height)
 
-        local randomStone = math.random(#listObject)
-
-        ESX.Game.SpawnLocalObject(listObject[randomStone].Name, vector3(objectCoords.x, objectCoords.y, Config.Zone.Pos.z), function(object)
-            PlaceObjectOnGroundProperly(object)
-            FreezeEntityPosition(object, true)
-
-            table.insert(ObjectLists, object)
-            Objects = Objects + 1
-        end)
+        if foundGround then
+            return z
+        end
     end
+
+    return 43.0
 end
 
 function ValidateObjectCoord(plantCoord)
     if Objects > 0 then
         local validate = true
 
-        for p in pairs(ObjectLists) do
+        for _, p in pairs(ObjectLists) do
             if GetDistanceBetweenCoords(plantCoord, GetEntityCoords(p), true) < 5 then
                 validate = false
             end
@@ -468,16 +425,59 @@ function ValidateObjectCoord(plantCoord)
     end
 end
 
-function GetCoordZ(x, y)
-    local groundCheckHeights = { 40.0, 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 100.0 }
+-- DeleteObject
+function DeleteObject()
+    startwork = false
+    ESX.Game.DeleteObject(Objecton)
+    PlaceObjectOnGroundProperly(Objecton)
 
-    for height in ipairs(groundCheckHeights) do
-        local foundGround, z = GetGroundZFor_3dCoord(x, y, height)
-
-        if foundGround then
-            return z
-        end
+    for _, obj in pairs(ObjectLists) do
+        ESX.Game.DeleteObject(obj)
     end
 
-    return 43.0
+    Citizen.Wait(2000)
+
+    for _, obj in pairs(ObjectLists) do
+        ESX.Game.DeleteObject(obj)
+    end
+
+    Citizen.Wait(2000)
+
+    for _, obj in pairs(ObjectLists) do
+        ESX.Game.DeleteObject(obj)
+        Objects = 0
+    end
+
+    Citizen.Wait(500)
+end
+
+function Object()
+    local playerPed = PlayerPedId()
+    local coords = GetEntityCoords(playerPed)
+    local x, y, z = table.unpack(coords)
+    local boneIndex = GetPedBoneIndex(playerPed, 57005)
+    
+    Objecton = CreateObject(GetHashKey('prop_tool_pickaxe'), x, y, z + 0.2,  true,  true, true)
+    AttachEntityToEntity(Objecton, playerPed, boneIndex, 0.16, 0.00, 0.00, 410.0, 20.00, 140.0, true, true, false, true, 1, true)
+end
+
+-- DisplayHelpText
+function DisplayHelpText(str)
+    SetTextComponentFormat("STRING")
+    AddTextComponentString(str)
+    DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+end
+
+function OpenTrashCan()
+    TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base", "base", 8.0, -8.0, -1, 1, 0, false, false, false)
+    TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@", "player_search", 8.0, -8.0, -1, 48, 0, false, false, false)
+    Wait(Config.Time)
+    ClearPedTasks(PlayerPedId())
+end
+
+function loadAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+        RequestAnimDict(dict)
+        Citizen.Wait(10)
+    end
 end
