@@ -1,0 +1,101 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+.container { 
+	width:15%;
+	height:51%;
+	position:absolute;
+	right:1%;
+	bottom:16%;
+}
+.north-container, .south-container, .west-container, .east-container { 
+	width:100%;
+	height:25%;
+	position:absolute;
+}
+.south-container { 
+	top:25%;
+}
+.west-container { 
+	top:50%;
+}
+.east-container { 
+	top:75%;
+}
+.north-card-squre, .south-card-squre, .west-card-squre, .east-card-squre { 
+	width:80%;
+	height:48%;
+	position:absolute;
+	top:46%;
+}
+.north-card-squre { 
+	background-color:rgba(60, 60, 60, 1);
+}
+.south-card-squre { 
+	background-color:blue
+}
+.west-card-squre { 
+	background-color:gainsboro;
+}
+.east-card-squre { 
+	background-color:orangered;
+}
+.north-card-circle, .south-card-circle, .west-card-circle, .east-card-circle { 
+	border-radius:50%;
+	width:46%;
+	height:94%;
+	position:absolute;
+	left:56%;
+}
+.north-card-circle { 
+	background-color:rgba(60, 60, 60, 1);
+}
+.south-card-circle { 
+	background-color:blue
+}
+.west-card-circle { 
+	background-color:gainsboro;
+}
+.east-card-circle { 
+	background-color:orangered;
+}
+.number, .west-number { 
+	color: white;
+	position:absolute;
+	left:15%;
+	top:49%;
+	font-size:48px;
+}
+.west-number { 
+	color: black;
+}
+.north-logo, .south-logo, .west-logo, .east-logo { 
+	width:44%;
+	height:90%;
+	position:absolute;
+	left:56%;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.north-logo { 
+	background-image:url(../img/north.png);
+}
+.south-logo { 
+	background-image:url(../img/south.png);
+}
+.west-logo { 
+	background-image:url(../img/west.png);
+}
+.east-logo { 
+	background-image:url(../img/east.png);
+}
+.corpse { 
+	width:47%;
+	height:25%;
+	position:absolute;
+	left:5%;
+	top:30%;
+	background-image:url(../img/corpse.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
